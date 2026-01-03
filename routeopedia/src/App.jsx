@@ -1,11 +1,12 @@
 import { useState } from "react";
+import MainLayout from "./layouts/MainLayout";
 
 function App() {
   const year = new Date().getFullYear();
   return (
     <>
       <div className="d-flex flex-column min-vh-100">
-        Header
+        <MainLayout />
         <main className="container flex-grow-1 d-flex flex-column">
           CONTENT
         </main>
