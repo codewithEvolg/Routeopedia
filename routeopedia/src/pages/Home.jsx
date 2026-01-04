@@ -1,4 +1,10 @@
+import { useNavigate } from "react-router-dom";
+
 const Home = () => {
+  const navigate = useNavigate();
+  const handleContactClick = () => {
+    navigate("/contact");
+  };
   return (
     <div className="container py-4">
       <h1 className="text-center mb-4">
@@ -23,6 +29,11 @@ const Home = () => {
           </li>
         </ul>
         <p>Try accessing /admin or /customer-portal with different roles</p>
+        <div className="mb-4">
+          <button onClick={handleContactClick} className="btn btn-secondary">
+            Go to Contact page
+          </button>
+        </div>
       </div>
     </div>
   );
