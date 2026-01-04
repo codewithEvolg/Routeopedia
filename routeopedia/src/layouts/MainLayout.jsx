@@ -1,4 +1,5 @@
 import reactLogo from "../assets/react.svg";
+import { Link, NavLink } from "react-router-dom";
 
 const MainLayout = () => {
   return (
@@ -21,14 +22,14 @@ const MainLayout = () => {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <NavLink className="nav-link" aria-current="page" to="/">
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Features
-              </a>
+              <NavLink className="nav-link" to="/contact">
+                Contact
+              </NavLink>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
