@@ -5,9 +5,9 @@ const MainLayout = () => {
   return (
     <nav className="navbar navbar-expand-sm bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           <img src={reactLogo} height="30" />
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -22,19 +22,14 @@ const MainLayout = () => {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <NavLink className="nav-link" aria-current="page" to="/">
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
               <NavLink className="nav-link" to="/contact">
                 Contact
               </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <NavLink className="nav-link" to="/pricing">
                 Pricing
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item dropdown">
               <a
