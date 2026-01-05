@@ -14,7 +14,10 @@ const ProductList = () => {
               <h3>{product.name}</h3>
               <p>Price: ${product.price}</p>
               <p>Category: ${product.category}</p>
-              <Link to="" className="btn btn-outline-success">
+              <Link
+                to={`/products/item/${product.id}`}
+                className="btn btn-outline-success"
+              >
                 View Details
               </Link>
             </div>
