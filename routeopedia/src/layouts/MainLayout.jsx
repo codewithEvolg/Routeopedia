@@ -27,8 +27,8 @@ const MainLayout = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/pricing">
-                Pricing
+              <NavLink className="nav-link" to="/products">
+                Product
               </NavLink>
             </li>
             <li className="nav-item dropdown">
