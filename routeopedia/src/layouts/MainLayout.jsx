@@ -31,6 +31,16 @@ const MainLayout = () => {
                 Product
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/admin">
+                AdminPortal
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/customer">
+                CustomerPortal
+              </NavLink>
+            </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -61,7 +71,12 @@ const MainLayout = () => {
             </li>
           </ul>
         </div>
-        <form className="d-flex" role="search">
+        <div className="d-flex align-item-center gap-2">
+          <NavLink className="btn btn-primary" to="/login">
+            Login
+          </NavLink>
+        </div>
+        {/* <form className="d-flex" role="search">
           <input
             className="form-control me-2"
             type="search"
@@ -71,7 +86,7 @@ const MainLayout = () => {
           <button className="btn btn-outline-success" type="submit">
             Search
           </button>
-        </form>
+        </form> */}
       </div>
     </nav>
   );
