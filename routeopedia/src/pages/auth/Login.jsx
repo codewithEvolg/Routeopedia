@@ -1,6 +1,8 @@
-import React from "react";
+import { setAuthState } from "../utility/AuthUtility";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = new useNavigate();
   const handleFakeLogin = (role) => {
     const users = {
       admin: { email: "admin@demo.com", name: "Admin User", role: "admin" },
@@ -10,6 +12,8 @@ const Login = () => {
         role: "customer",
       },
     };
+    setAuthState(true, users[role]);
+    navigate("/");
   };
   return (
     <div className="container p-4">
