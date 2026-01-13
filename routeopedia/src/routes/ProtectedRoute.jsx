@@ -1,11 +1,12 @@
-import React from "react";
 import { getAuthState } from "../pages/utility/AuthUtility";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = getAuthState();
+  const location = useLocation();
+
   if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" state={{ from: location }} />;
   }
   return children;
 };

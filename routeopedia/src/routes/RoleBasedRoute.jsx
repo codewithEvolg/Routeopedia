@@ -2,8 +2,8 @@ import { getAuthState, hasAnyRole } from "../pages/utility/AuthUtility";
 import { Navigate } from "react-router-dom";
 
 const RoleBasedRoute = ({ children, allowedRoles }) => {
-  console.log(allowedRoles[0]);
   const { isAuthenticated, currentUser } = getAuthState();
+
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }

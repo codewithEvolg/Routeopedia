@@ -1,6 +1,6 @@
 import reactLogo from "../assets/react.svg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { getAuthState, logout } from "../pages/utility/AuthUtility";
+import { getAuthState, logout, hasRole } from "../pages/utility/AuthUtility";
 
 const MainLayout = () => {
   const { isAuthenticated, currentUser } = getAuthState();
@@ -38,56 +38,34 @@ const MainLayout = () => {
                 Product
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/admin">
-                AdminPortal
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/customer">
-                CustomerPortal
-              </NavLink>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown link
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </li>
+            {isAuthenticated && hasRole("admin") && (
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/admin">
+                  AdminPortal
+                </NavLink>
+              </li>
+            )}
+            {isAuthenticated && hasRole("customer") && (
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/customer">
+                  CustomerPortal
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
 
         <div className="d-flex align-items-center gap-2">
-          {currentUser?.role && (
-            <p className="mb-0 p-2">{currentUser?.email}</p>
-          )}
-
           {isAuthenticated ? (
-            <button onClick={handleLogout} className="btn btn-outline-danger">
-              Logout
-            </button>
+            <>
+              <span className="me-2 text-secondary small d-flex align-items-center">
+                <i className="bi bi-person-circle me-1"></i>
+                Hello, {currentUser?.name}
+              </span>
+              <button onClick={handleLogout} className="btn btn-outline-danger">
+                Logout
+              </button>
+            </>
           ) : (
             <NavLink className="btn btn-primary" to="/login">
               Login

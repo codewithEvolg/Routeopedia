@@ -29,7 +29,7 @@ function setAuthState(auth, user = null) {
   }
 }
 
-function hasRoles(role) {
+function hasRole(role) {
   return currentUser?.role === role;
 }
 
@@ -46,4 +46,4 @@ function logout() {
   }
 }
 
-export { setAuthState, getAuthState, hasRoles, hasAnyRole, logout };
+export { setAuthState, getAuthState, hasRole, hasAnyRole, logout };

@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import { getAuthState } from "./utility/AuthUtility";
 
 const Home = () => {
+  const { isAuthenticated, currentUser } = getAuthState();
   const navigate = useNavigate();
   const handleContactClick = () => {
     navigate("/contact");
@@ -11,7 +13,20 @@ const Home = () => {
         <i className="bi bi-house-door-fill me-2"></i>Home Page
       </h1>
       <div className="border rounded shadow p-4" style={{ textAlign: "left" }}>
-        <p>Welcome to the React Router exercise!</p>
+        {isAuthenticated ? (
+          <p>
+            Welcome back, <strong>{currentUser?.name}</strong>
+            <span
+              className={`badge ms-2 ${
+                currentUser?.role === "admin" ? "bg-danger" : "bg-primary"
+              }`}
+            >
+              {currentUser?.role}
+            </span>
+          </p>
+        ) : (
+          <p>Welcome to the React Router exercise!</p>
+        )}
         <h4 className="mt-4">
           <i className="bi bi-sheld-lock-fill me-2"></i>Try Role
         </h4>

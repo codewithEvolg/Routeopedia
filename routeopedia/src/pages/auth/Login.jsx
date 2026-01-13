@@ -1,8 +1,11 @@
 import { setAuthState } from "../utility/AuthUtility";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
   const handleFakeLogin = (role) => {
     const users = {
       admin: { email: "admin@demo.com", name: "Admin User", role: "admin" },
@@ -13,13 +16,7 @@ const Login = () => {
       },
     };
     setAuthState(true, users[role]);
-    if (role === "admin") {
-      navigate("/admin");
-    } else if (role === "customer") {
-      navigate("/customer");
-    } else {
-      navigate("/");
-    }
+    navigate(from);
   };
   return (
     <div className="container p-4">
